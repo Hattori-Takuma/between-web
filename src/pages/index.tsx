@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout';
+import Link from 'next/link'
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -13,6 +14,9 @@ center flex-col"
         <h1 className="mb-4 text-green-500 text-3xl">サンプル</h1>
         <p className="mb-2 text-center">sample text</p>
         <button className="btn-blue">Lets Start!!</button>
+         <Link href="/login">
+        こちら
+      </Link>
       </section>
     </Layout>
   );
