@@ -14,10 +14,6 @@ export class GptRepository {
           functions,
           'between-v1-Gpt35-getMessage'
         );
-        console.log(
-          '🚀 ~ file: gptRepository.ts:11 ~ GptRepository ~ createGptMessage ~ message:',
-          func
-        );
         await func({ message }).then((res: any) => {
           resolve(res.data as any);
         });
