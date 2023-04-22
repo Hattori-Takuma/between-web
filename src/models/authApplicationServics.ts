@@ -12,10 +12,7 @@ export const googleLogin = async () => {
         // const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-        console.log(user.displayName)
-        console.log(user.email)
-        console.log(user.uid)
-        console.log(user)
+
         resolve(user)
         // ...
       }).catch((error) => {
