@@ -25,6 +25,12 @@ center flex-col"
           Lets Start!!
         </button>
 
+          <Link href="/login">
+        ログイン画面へ
+      </Link>
+
+
+
       </section>
     </Layout>
   );

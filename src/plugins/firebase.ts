@@ -24,5 +24,6 @@ export const db = getFirestore();
 export const storage = getStorage();
 export const functions = getFunctions(app, 'asia-northeast1');
 export const provider = new GoogleAuthProvider();
+export const googleAuthProvider = new GoogleAuthProvider();
 
 export default firebase;
