@@ -13,7 +13,11 @@ const handler = (path:string) => {
 }
 
 const addFriends = async () => {
-   await friendsInfo()
+  const user = {
+    id: "xxxxxxxxxxxxxxx",
+    uname: "test1"
+  }
+  await friendsInfo(user)
   }
 
    const googleLogOut = async () => {
