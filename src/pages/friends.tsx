@@ -13,7 +13,7 @@ const handler = (path:string) => {
 }
 
 const addFriends = async () => {
-  const friends = await friendsInfo()
+   await friendsInfo()
   }
 
    const googleLogOut = async () => {

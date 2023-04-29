@@ -1,11 +1,12 @@
-import { doc, setDoc, getFirestore, } from "firebase/firestore";
+import { addDoc, collection, getFirestore, serverTimestamp } from "firebase/firestore";
 
 export const db = getFirestore();
 
+
+
 export const friendsInfo = async () => {
-  const cityRef = await setDoc(doc(db, "friends"), {
-    name: "Los Angeles",
-    state: "CA",
-    country: "USA"
-  })
+  const docRef = await addDoc(collection(db, "friends"), {
+    friends: "uid",
+  });
+  console.log(" friends ", docRef.id);
 }
