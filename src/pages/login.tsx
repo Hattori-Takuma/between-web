@@ -5,6 +5,7 @@ import Router from 'next/router'
 import { googleLogin } from "../models/authApplicationServics"
 import { userInfo } from '@/models/userInfoApplicationService';
 
+
 const inter = Inter({ subsets: ['latin'] });
 
 const handler = (path:string) => {
@@ -15,8 +16,9 @@ const google = async () => {
   const user = await googleLogin()
   await userInfo(user)
   handler('/friends')
+console.log('user',user)
+}
   
-  }
 
 const login = () => {
   return (

@@ -1,5 +1,6 @@
 import { addDoc, collection, getFirestore, serverTimestamp } from "firebase/firestore";
 
+
 export const db = getFirestore();
 
 export const userInfo = async (user: any) => {

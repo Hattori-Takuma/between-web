@@ -1,14 +1,17 @@
 import Layout from '@/components/Layout';
-
+import { useEffect } from 'react';
 import Link from 'next/link'
-
 import { createGptMessage } from '@/models/gptApplicationService';
-
 import { Inter } from 'next/font/google';
+import{useLoginCheck} from '../hooks/useLoginCheck'
+
 
 const inter = Inter({ subsets: ['latin'] });
+  
 
 export default function Home() {
+
+
   return (
     <Layout>
       <section

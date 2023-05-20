@@ -4,20 +4,31 @@ import { Inter } from 'next/font/google';
 import Router from 'next/router'
 import { logout } from '../models/authApplicationServics'
 import { friendsInfo } from '@/models/friendsInfoApplicationService';
+import { selectUser } from '../features/useSlics';
+import { useAppSelector } from '../hooks/useRTK';
+import{useLoginCheck}from'../hooks/useLoginCheck'
 
 
 const inter = Inter({ subsets: ['latin'] });
+
+
+
+const friends = () => {
+ const user = useAppSelector(selectUser);
+
+// const user = useLoginCheck()
+
 
 const handler = (path:string) => {
   Router.push(`${path}/`)
 }
 
 const addFriends = async () => {
-  const user = {
-    id: "xxxxxxxxxxxxxxx",
-    uname: "test1"
-  }
-  await friendsInfo(user)
+  // const userObj = {
+  //   uid: user.uid,
+  //   uname: "test1"
+  // }
+  await friendsInfo(user.uid)
   }
 
    const googleLogOut = async () => {
@@ -27,10 +38,9 @@ const addFriends = async () => {
    };
 
 
-
-const friends = () => {
   return (
-     <Layout>
+    <Layout>
+      <div></div>
       <div>お友達たち（仮）</div>
       <button onClick={googleLogOut}>ログアウト</button>
       
