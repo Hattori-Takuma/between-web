@@ -1,4 +1,4 @@
-import { addDoc, collection, getFirestore, setDoc, doc, getDoc, query } from "firebase/firestore";
+import { addDoc, collection, getFirestore, setDoc, doc, getDoc, query, getDocs } from "firebase/firestore";
 
 
 export const db = getFirestore();
@@ -23,7 +23,13 @@ export const getFriends = async (uid: string) => {
   }
 };
 
-
+export const getFriends2 = async () => {
+  const querySnapshot = await getDocs(collection(db, "users"));
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  })
+}
 // export const frienduid = "追加したいfrienduid"
 
 
