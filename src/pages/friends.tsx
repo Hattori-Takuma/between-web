@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Inter } from 'next/font/google';
 import Router from 'next/router'
 import { logout } from '../models/authApplicationServics'
-import { friendsInfo } from '@/models/friendsInfoApplicationService';
+import { friendsInfo,getFriends } from '@/models/friendsInfoApplicationService';
 import { selectUser } from '../features/useSlics';
 import { useAppSelector } from '../hooks/useRTK';
 import{useLoginCheck}from'../hooks/useLoginCheck'
@@ -29,19 +29,30 @@ const addFriends = async () => {
   //   uname: "test1"
   // }
   await friendsInfo(user.uid)
-  }
+}
+  
 
    const googleLogOut = async () => {
     await logout();
     handler('/login')
     console.log('logout');
    };
+  
+  
+  const get = async () => {
+    await getFriends(user.uid)
+  }
 
 
   return (
     <Layout>
       <div></div>
-      <div>お友達たち（仮）</div>
+      <div>名前：{user.displayName}</div>
+    
+
+
+
+
       <button onClick={googleLogOut}>ログアウト</button>
       
       <div>
@@ -50,7 +61,10 @@ const addFriends = async () => {
       </Link>
       </div>
       <button onClick={addFriends}>友達追加</button>
-
+      <br />
+      
+       <button onClick={get}>友達取得</button>
+      
 
     </Layout>
   )
