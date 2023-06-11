@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 
 
-const friends = () => {
+const Friends = () => {
  const user = useAppSelector(selectUser);
 
 // const user = useLoginCheck()
@@ -73,4 +73,4 @@ const addFriends = async () => {
     </Layout>
   )
 }
-  export default friends;
+  export default Friends;

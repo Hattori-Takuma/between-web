@@ -8,7 +8,7 @@ import { getFriends2,getFriends3} from '@/models/friendsInfoApplicationService';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const friendsSarch = () => {
+const FriendsSarch = () => {
 
 
    const user = useAppSelector(selectUser);
@@ -45,7 +45,7 @@ const handler = (path:string) => {
 }
 
 
-export default friendsSarch;
+export default FriendsSarch;
 
 
 
