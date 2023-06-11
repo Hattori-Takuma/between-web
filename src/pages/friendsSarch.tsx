@@ -1,12 +1,9 @@
 import Layout from '@/components/Layout';
 import Link from 'next/link'
-import { Inter } from 'next/font/google';
 import { useAppSelector } from '../hooks/useRTK';
 import { selectUser } from '../features/useSlics';
 import Router from 'next/router'
-import { getFriends2,getFriends3} from '@/models/friendsInfoApplicationService';
-
-const inter = Inter({ subsets: ['latin'] });
+import { getFriends2} from '@/models/friendsInfoApplicationService';
 
 const FriendsSarch = () => {
    const user = useAppSelector(selectUser);

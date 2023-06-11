@@ -1,6 +1,6 @@
-import { addDoc, collection, getFirestore, setDoc, doc, getDoc, query, getDocs, where } from "firebase/firestore";
+import { collection, setDoc, doc, getDoc, getDocs } from "firebase/firestore";
 
-export const db = getFirestore();
+import { db } from '../plugins/firebase';
 
 
 export const friendsInfo = async (uid: string) => {
@@ -8,7 +8,6 @@ export const friendsInfo = async (uid: string) => {
     uid: ["1", "friends22"],
   });
 }
-
 
 export const getFriends = async (uid: string) => {
   const docRef = doc(db, "friends", uid);
