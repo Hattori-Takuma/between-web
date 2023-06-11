@@ -9,18 +9,12 @@ import { getFriends2,getFriends3} from '@/models/friendsInfoApplicationService';
 const inter = Inter({ subsets: ['latin'] });
 
 const FriendsSarch = () => {
-
-
    const user = useAppSelector(selectUser);
-
 // const user = useLoginCheck()
 
 const handler = (path:string) => {
   Router.push(`${path}/`)
 }
-  
-  
-
   return(
 
     <Layout>  
@@ -36,9 +30,6 @@ const handler = (path:string) => {
       </Link>
       <br/>
       <button onClick={getFriends2}>友達取得</button>
-
-     
-    
 
 </Layout>
   )

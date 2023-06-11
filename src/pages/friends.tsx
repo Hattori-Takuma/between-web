@@ -11,8 +11,6 @@ import{useLoginCheck}from'../hooks/useLoginCheck'
 
 const inter = Inter({ subsets: ['latin'] });
 
-
-
 const Friends = () => {
  const user = useAppSelector(selectUser);
 
