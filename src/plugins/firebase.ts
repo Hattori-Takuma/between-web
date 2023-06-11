@@ -14,16 +14,10 @@ const firebaseConfig = {
 };
 
 const apps = getApps;
-let app = undefined;
-if (!apps.length) {
-  app = initializeApp(firebaseConfig);
-}
+let app = initializeApp(firebaseConfig);
 
 export const auth = getAuth();
 export const db = getFirestore();
 export const storage = getStorage();
 export const functions = getFunctions(app, 'asia-northeast1');
-export const provider = new GoogleAuthProvider();
 export const googleAuthProvider = new GoogleAuthProvider();
-
-export default firebase;
