@@ -1,4 +1,4 @@
-import { addDoc, collection, getFirestore, setDoc, doc, getDoc, query, getDocs } from "firebase/firestore";
+import { addDoc, collection, getFirestore, setDoc, doc, getDoc, query, getDocs, where } from "firebase/firestore";
 
 
 export const db = getFirestore();
@@ -34,19 +34,12 @@ export const getFriends2 = async () => {
 
 
 
-// export const getFriends = async (uid: string, frienduid: string) => {
-//   const docRef = doc(db, "friends", uid);
-//   const docSnap = await getDoc(docRef);
-
-//   if (docSnap.exists()) {
-//     console.log("Document data:", docSnap.data().uid.includes(frienduid));
-//   } else {
-//     // docSnap.data() will be undefined in this case
-//     console.log("No such document!");
-//   }
-// };
-
-
+export const getFriends3 = async () => {
+  const querySnapshot = await getDocs(collection(db, "users"));
+  querySnapshot.forEach((doc) => {
+    querySnapshot.docs.map((doc) => doc.data());
+  })
+}
 
 
 

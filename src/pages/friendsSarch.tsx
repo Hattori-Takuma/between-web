@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google';
 import { useAppSelector } from '../hooks/useRTK';
 import { selectUser } from '../features/useSlics';
 import Router from 'next/router'
-import { getFriends2 } from '@/models/friendsInfoApplicationService';
+import { getFriends2,getFriends3} from '@/models/friendsInfoApplicationService';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -36,6 +36,8 @@ const handler = (path:string) => {
       </Link>
       <br/>
       <button onClick={getFriends2}>友達取得</button>
+
+     
     
 
 </Layout>
