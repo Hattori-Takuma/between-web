@@ -2,6 +2,7 @@ import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth, googleAuthProvider } from "../plugins/firebase";
 
 
+
 export const googleLogin = async () => {
   return new Promise(function (resolve, reject) {
     signInWithPopup(auth, googleAuthProvider)
@@ -28,6 +29,9 @@ export const googleLogin = async () => {
       });
   });
 }
+
+
+
 
 
 export const logout = async () => {
