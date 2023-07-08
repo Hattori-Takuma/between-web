@@ -15,22 +15,20 @@ const initialState: InitialState = {
   }
 }
 
-export const userSlice = createSlice({
-  name: 'user',
+export const usersSlice = createSlice({
+  name: 'users',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    login: (state, action) => {
+    search: (state, action) => {
       state.value = action.payload
-    },
-    logout: (state) => {
-      state = initialState
-    },
+    }
+
   },
 });
 
-export const { login, logout } = userSlice.actions;
+export const { search } = usersSlice.actions;
 
 export const selectUser = (state: RootState) => state.user.value;
 
-export default userSlice.reducer;
+export default usersSlice.reducer;

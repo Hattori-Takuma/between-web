@@ -4,11 +4,13 @@ import Footer from './Footer';
 import Navbar from './Navbar';
 import { useEffect } from 'react';
 import{useLoginCheck} from '../hooks/useLoginCheck'
-
+import{usesSearchCheck}from'../hooks/usesSearchCheck'
 
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   const isLogin = useLoginCheck();
+  usesSearchCheck();
+
   useEffect(() => {
     if (!isLogin) {
       console.log(`login status : [ ${isLogin} ]`);

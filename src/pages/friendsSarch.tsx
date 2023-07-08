@@ -12,6 +12,8 @@ const FriendsSarch = () => {
 const handler = (path:string) => {
   Router.push(`${path}/`)
 }
+  
+  
   return(
 
     <Layout>  

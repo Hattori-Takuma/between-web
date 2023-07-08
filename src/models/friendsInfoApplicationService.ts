@@ -1,4 +1,4 @@
-import { collection, setDoc, doc, getDoc, getDocs } from "firebase/firestore";
+import { collection, setDoc, doc, getDoc, getDocs, query, where, } from "firebase/firestore";
 
 import { db } from '../plugins/firebase';
 
@@ -21,7 +21,7 @@ export const getFriends = async (uid: string) => {
   }
 };
 
-export const getFriends2 = async () => {
+export const getAllFriends = async () => {
   const querySnapshot = await getDocs(collection(db, "users"));
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
@@ -32,12 +32,22 @@ export const getFriends2 = async () => {
 
 
 
-export const getFriends3 = async () => {
-  const querySnapshot = await getDocs(collection(db, "users"));
-  querySnapshot.forEach((doc) => {
-    querySnapshot.docs.map((doc) => doc.data());
-  })
-}
+// export const getFriends3 = async () => {
+//   const q = query(collection(db, "users"), where("uid", "==", "x"));
+
+//   const querySnapshot = await getDocs(q);
+//   querySnapshot.forEach((doc) => {
+//     // doc.data() is never undefined for query doc snapshots
+//     console.log(doc.id, " => ", doc.data());
+//   });
+// }
+
+
+
+
+
+
+
 
 
 
