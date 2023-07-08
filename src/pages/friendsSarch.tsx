@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useAppSelector } from '../hooks/useRTK';
 import { selectUser } from '../features/useSlics';
 import Router from 'next/router'
-import { getFriends2} from '@/models/friendsInfoApplicationService';
+// import { getFriends2} from '@/models/friendsInfoApplicationService';
 
 const FriendsSarch = () => {
    const user = useAppSelector(selectUser);
@@ -28,7 +28,7 @@ const handler = (path:string) => {
         戻る
       </Link>
       <br/>
-      <button onClick={getFriends2}>友達取得</button>
+      {/* <button onClick={getFriends2}>友達取得</button> */}
 
 </Layout>
   )

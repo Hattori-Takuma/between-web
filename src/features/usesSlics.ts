@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { getAllFriends } from '@/models/friendsInfoApplicationService';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 import { RootState } from '../app/store';
 import { UserType } from '../types/UserTypse'
 
@@ -14,6 +16,11 @@ const initialState: InitialState = {
     photoUrl: "",
   }
 }
+export const fetchGetUserData = createAsyncThunk('fetch/getUsers', async () => {
+  const res = await getAllFriends()
+  return res
+})
+
 
 export const usersSlice = createSlice({
   name: 'users',
@@ -25,6 +32,15 @@ export const usersSlice = createSlice({
     }
 
   },
+  extraReducers: (builder) => {
+    builder.addCase(fetchGetUserData.fulfilled, (state, action) => {
+      console.log('check', action.payload)
+      return {
+        ...state,
+        users: action.payload
+      }
+    })
+  }
 });
 
 export const { search } = usersSlice.actions;

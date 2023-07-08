@@ -22,11 +22,14 @@ export const getFriends = async (uid: string) => {
 };
 
 export const getAllFriends = async () => {
+  let returnUsers: any[] = []
   const querySnapshot = await getDocs(collection(db, "users"));
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
     console.log(doc.id, " => ", doc.data());
+    returnUsers.push(doc.data())
   })
+  return returnUsers
 }
 // export const frienduid = "追加したいfrienduid"
 
