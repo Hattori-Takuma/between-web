@@ -40,10 +40,10 @@ const Friends = () => {
       <div>
         <Link href="/login">戻る</Link>
       </div>
-      <button onClick={addFriends}>友達追加</button>
+      {/* <button onClick={addFriends}>友達追加</button>
       <br />
 
-      <button onClick={get}>友達取得</button>
+      <button onClick={get}>友達取得</button> */}
       <br />
       <Link href="/friendsSarch">友達検索</Link>
       <br />
