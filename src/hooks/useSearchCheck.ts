@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { fetchGetUserData, search, selectUser } from '../features/usersSlics';
+import { fetchGetUserData, search, selectUsers } from '../features/usersSlics';
 import { useAppDispatch, useAppSelector } from './useRTK';
 import { auth } from '../plugins/firebase';
 import { UserType } from '../types/UserTypse';

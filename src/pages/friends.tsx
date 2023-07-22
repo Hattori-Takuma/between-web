@@ -6,11 +6,20 @@ import {
 import Link from 'next/link';
 import Router from 'next/router';
 import { selectUser } from '../features/useSlics';
+import { selectUsers } from '../features/usersSlics';
 import { useAppSelector } from '../hooks/useRTK';
 import { logout } from '../models/authApplicationServics';
+import { Button } from '@nextui-org/react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+
 
 const Friends = () => {
   const user = useAppSelector(selectUser);
+  const users = useAppSelector(selectUsers);
+  console.log(users,"確認")
+
 
   const handler = (path: string) => {
     Router.push(`${path}/`);
@@ -30,10 +39,16 @@ const Friends = () => {
     await getFriends(user.uid);
   };
 
+
+
+
+
   return (
     <Layout>
       <div></div>
       <div>名前：{user.displayName}</div>
+      <div>テスト：{user.displayName }</div>
+     
 
       <button onClick={googleLogOut}>ログアウト</button>
 

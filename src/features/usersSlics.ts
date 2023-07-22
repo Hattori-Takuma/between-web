@@ -5,16 +5,11 @@ import { RootState } from '../app/store';
 import { UserType } from '../types/UserTypse'
 
 interface InitialState {
-  value: UserType
+  value: UserType[]
 }
 
 const initialState: InitialState = {
-  value: {
-    uid: "",
-    email: "",
-    displayName: "",
-    photoUrl: "",
-  }
+  value: []
 }
 export const fetchGetUserData = createAsyncThunk('fetch/getUsers', async () => {
   const res = await getAllFriends()
@@ -37,7 +32,7 @@ export const usersSlice = createSlice({
       console.log('check', action.payload)
       return {
         ...state,
-        users: action.payload
+        value: action.payload
       }
     })
   }
@@ -45,6 +40,7 @@ export const usersSlice = createSlice({
 
 export const { search } = usersSlice.actions;
 
-export const selectUser = (state: RootState) => state.user.value;
+export const selectUsers = (state: RootState) => state.users;
+
 
 export default usersSlice.reducer;

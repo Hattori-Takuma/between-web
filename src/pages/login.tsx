@@ -3,6 +3,7 @@ import { userInfo } from '@/models/userInfoApplicationService';
 import Link from 'next/link';
 import Router from 'next/router';
 import { googleLogin } from '../models/authApplicationServics';
+import { Button } from '@nextui-org/react';
 
 
 
@@ -23,6 +24,7 @@ const google = async () => {
       <Link href="/">[戻る]</Link>
 
       <Link href="/friends">[ログイン]</Link>
+     
 
       <button onClick={google}>[googleログイン]</button>
     </Layout>

@@ -3,10 +3,14 @@ import Link from 'next/link'
 import { useAppSelector } from '../hooks/useRTK';
 import { selectUser } from '../features/useSlics';
 import Router from 'next/router'
+import { selectUsers } from '@/features/usersSlics';
+import Search from '../components/Search '
 // import { getFriends2} from '@/models/friendsInfoApplicationService';
 
 const FriendsSarch = () => {
-   const user = useAppSelector(selectUser);
+  const user = useAppSelector(selectUser);
+  const users = useAppSelector(selectUsers);
+  console.log("🚀 ~ file: friendsSarch.tsx:12 ~ FriendsSarch ~ users:", users)
 // const user = useLoginCheck()
 
 const handler = (path:string) => {
@@ -18,10 +22,14 @@ const handler = (path:string) => {
 
     <Layout>  
 
-  <form id="searchForm">
-    <input type="text" id="searchInput" placeholder="nameを入力"></input>
+  
+      {/* <input type="text" id="searchInput" placeholder="nameを入力"></input> */}
+          <Search/>
     <button type="submit">検索</button>
-  </form>
+    
+   
+       
+  
   <ul id="searchResults"></ul>
 
    <Link href="/friends">
@@ -30,6 +38,7 @@ const handler = (path:string) => {
       <br/>
       {/* <button onClick={getFriends2}>友達取得</button> */}
 
+     
 </Layout>
   )
 }
