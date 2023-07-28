@@ -12,11 +12,15 @@ console.log("🚀 ~ file: Search .tsx:10 ~ SearchComponent ~ users:", users)
   const handleSearchChange = (event:any) => {
     setSearchKeyword(event.target.value);
   };
-
-  const filteredusers = users.value.filter((users:any) =>
+ const filteredusers = users.value.filter((users:any) =>
     users.text?.toLowerCase().includes(searchKeyword.toLowerCase())
   );
-
+ 
+  const handleButtonClick = () => {
+    console.log('Input Value:', searchKeyword);
+    // ここで入力値を利用する他の処理を実行する
+   {filteredusers}
+  };
 
 
 
@@ -28,9 +32,12 @@ console.log("🚀 ~ file: Search .tsx:10 ~ SearchComponent ~ users:", users)
         onChange={handleSearchChange}
         placeholder="Search..."
       />
-       <button type="submit">検索</button>
+      <button onClick={handleButtonClick}>検索</button>
+
+
       <ul>
-        {filteredusers.map((users:any) => (
+      
+      /  {filteredusers.map((users: any) => (
           <li key={users.id}>{users.displayName}</li>
         ))}
       </ul>
