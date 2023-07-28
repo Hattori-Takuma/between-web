@@ -1,13 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
+};
 
-module.exports = nextConfig
-
+module.exports = nextConfig;
 
 module.exports = {
+  images: {
+    domains: ['www.stockvault.net'],
+  },
   experimental: {
-    appDir: true
-  }
+    appDir: true,
+  },
 };

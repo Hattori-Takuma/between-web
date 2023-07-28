@@ -1,9 +1,17 @@
+import { useLoginCheck } from '@/hooks/useLoginCheck';
 import { userInfo } from '@/models/userInfoApplicationService';
 import Image from 'next/image';
 import Router from 'next/router';
+import { useEffect } from 'react';
 import { googleLogin } from '../models/authApplicationServics';
 
 const Login = () => {
+  const isUser = useLoginCheck();
+  useEffect(() => {
+    if (isUser) {
+      Router.push(`friends`);
+    }
+  }, [isUser]);
   const google = async () => {
     const user = await googleLogin();
     console.log('🚀 ~ file: login.tsx:17 ~ google ~ user:', user);
