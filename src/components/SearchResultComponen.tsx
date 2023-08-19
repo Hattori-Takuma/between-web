@@ -1,7 +1,7 @@
 import { selectUser } from '../features/useSlics';
 import { selectUsers } from '../features/usersSlics';
 import { useAppSelector } from '../hooks/useRTK';
-import { registerFriends } from '../models/friendsInfoApplicationService'
+
 import { collection,  addDoc } from "firebase/firestore";
 import { db } from '../plugins/firebase';
 
@@ -31,8 +31,15 @@ const SearchResultComponent: React.FC<{ searchKeyword: string }> = ({
   {/* <button onClick={registerFriends}>[追加ボタン]</button> */}
 
       <ul>
+<<<<<<< HEAD
         {matchedUsers.map((users) => (
           <li key={users.uid}>・{users.name}  </li>
+=======
+        {matchedUsers.map((users, index) => (
+          <div key={index} className="flex">
+            <li key={users.uid}>・{users.name}</li>
+          </div>
+>>>>>>> fc1f6b062c8cc8c7b3d2c22b0e738093fb1d292f
         ))}
       </ul>
     </div>

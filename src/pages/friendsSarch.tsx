@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import SearchResultComponent from '@/components/SearchResultComponen';
+import ShowFriends from '@/components/ShowFriends';
 import { selectUsers } from '@/features/usersSlics';
 import Link from 'next/link';
 import Router from 'next/router';
@@ -42,6 +43,11 @@ const FriendsSarch = () => {
    
 
       <ul id="searchResults"></ul>
+
+      {/* 友達一覧表示 */}
+      <div>
+        <ShowFriends uid={user.uid} />
+      </div>
 
       <Link href="/friends">戻る</Link>
       <br />
