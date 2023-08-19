@@ -19,8 +19,10 @@ const SearchResultComponent: React.FC<{ searchKeyword: string }> = ({
       <h2>Search Results</h2>
 
       <ul>
-        {matchedUsers.map((users) => (
-          <li key={users.uid}>・{users.name}</li>
+        {matchedUsers.map((users, index) => (
+          <div key={index} className="flex">
+            <li key={users.uid}>・{users.name}</li>
+          </div>
         ))}
       </ul>
     </div>
