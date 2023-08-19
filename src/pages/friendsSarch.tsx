@@ -39,6 +39,7 @@ const FriendsSarch = () => {
         <SearchResultComponent searchKeyword={searchKeyword} />
       </div>
       <button type="submit">検索</button>
+   
 
       <ul id="searchResults"></ul>
 

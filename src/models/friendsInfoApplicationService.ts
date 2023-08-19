@@ -1,4 +1,4 @@
-import { collection, setDoc, doc, getDoc, getDocs, query, where, } from "firebase/firestore";
+import { collection, setDoc, doc, getDoc, getDocs, query, where, addDoc } from "firebase/firestore";
 
 import { db } from '../plugins/firebase';
 
@@ -32,6 +32,15 @@ export const getAllFriends = async () => {
   return returnUsers
 }
 // export const frienduid = "追加したいfrienduid"
+
+export const registerFriends = async (uid: string) => {
+  await addDoc(collection(db, "friends", uid), {
+    uid: ["追加したい友達のuid"],
+  });
+}
+
+
+
 
 
 
