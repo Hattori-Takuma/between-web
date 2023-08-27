@@ -2,7 +2,7 @@ import { selectUser } from '../features/useSlics';
 import { selectUsers } from '../features/usersSlics';
 import { useAppSelector } from '../hooks/useRTK';
 
-import { collection,  addDoc } from "firebase/firestore";
+import { collection,  addDoc,setDoc ,doc} from "firebase/firestore";
 import { db } from '../plugins/firebase';
 
 const SearchResultComponent: React.FC<{ searchKeyword: string }> = ({
@@ -19,21 +19,28 @@ const SearchResultComponent: React.FC<{ searchKeyword: string }> = ({
   
 
 
-  const registerFriends = async (uid: string) => {
-  await addDoc(collection(db, "friends", uid), {
-    uid: ["追加したい友達のuid"],
+  const registerFriends = async () => {
+  await setDoc(doc(db, "friends",user.uid), {
+    test: matchedUsers
   });
-}
+  }
+  
+
+// const friendsInfo = async () => {
+//   await setDoc(doc(db, 'friends', user.uid), {
+//     uid: ['8VxBTv75gcM0xjUWrly0Y0EgDKG3'],
+//   });
+// };
 
   return (
     <div>
       <h2>Search Results</h2>
-  {/* <button onClick={registerFriends}>[追加ボタン]</button> */}
+  
 
       <ul>
         {matchedUsers.map((users, index) => (
           <div key={index} className="flex">
-            <li key={users.uid}>・{users.name}</li>
+            <li key={users.uid}>・{users.name} <button onClick={registerFriends}>[追加ボタン]</button></li>
           </div>
         ))}
       </ul>
