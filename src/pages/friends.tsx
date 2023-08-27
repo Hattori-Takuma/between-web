@@ -37,9 +37,9 @@ const Friends = () => {
     <Layout>
       <div></div>
       <div>名前：{user.displayName}</div>
-      <div>テスト：{user.displayName}</div>
+     
 
-      <button onClick={googleLogOut}>ログアウト</button>
+     
 
       <div>
         <Link href="/login">戻る</Link>
@@ -49,9 +49,18 @@ const Friends = () => {
 
       <button onClick={get}>友達取得</button> */}
       <br />
-      <Link href="/friendsSarch">友達検索</Link>
+      <Link href="/friendsSarch">MY友達</Link>
       <br />
       <Link href="/locationinfo">位置情報取得</Link>
+
+      
+
+
+
+
+      <br />
+      
+       <button onClick={googleLogOut}>ログアウト</button>
     </Layout>
   );
 };

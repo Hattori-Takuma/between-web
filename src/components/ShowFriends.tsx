@@ -24,7 +24,7 @@ const ShowFriends = ({ uid }: { uid: string }) => {
         {users.map((user, index) => {
           return (
             <li key={index}>
-              {user.name} / {user.address}
+              {user.name} / {user.address} / <button >🍺🍚🍖</button>
             </li>
           );
         })}

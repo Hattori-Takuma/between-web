@@ -30,6 +30,17 @@ const FriendsSarch = () => {
       <div>
         <h1> ログイン中：「{user.displayName}」</h1>
 
+
+ <div>
+        <ShowFriends uid={user.uid} />
+      </div>
+
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+
+
         <h3>「FriendsSarch」</h3>
         <input
           type="text"
@@ -39,15 +50,12 @@ const FriendsSarch = () => {
         />
         <SearchResultComponent searchKeyword={searchKeyword} />
       </div>
-      <button type="submit">検索</button>
+    
    
 
       <ul id="searchResults"></ul>
 
-      {/* 友達一覧表示 */}
-      <div>
-        <ShowFriends uid={user.uid} />
-      </div>
+   
 
       <Link href="/friends">戻る</Link>
       <br />
