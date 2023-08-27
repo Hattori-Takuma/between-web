@@ -43,9 +43,17 @@ export const getMyFriends = async (uid: string) => {
   const returnArr: string[] = [];
   const q = query(collection(db, 'friends'));
   const querySnapshot = await getDocs(q);
+  // await querySnapshot.forEach((doc) => {
+  //   if (doc.id === uid) {
+  //     doc.data().uid.forEach((friend: string) => {
+  //       returnArr.push(friend);
+  //     });
+  //   }
+  // });
   await querySnapshot.forEach((doc) => {
-    if (doc.id === uid) {
-      doc.data().uid.forEach((friend: string) => {
+    const data = doc.data();
+    if (data && data.uid && doc.id === uid) {
+      data.uid.forEach((friend: string) => {
         returnArr.push(friend);
       });
     }

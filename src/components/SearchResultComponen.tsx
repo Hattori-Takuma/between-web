@@ -16,16 +16,15 @@ const SearchResultComponent: React.FC<{ searchKeyword: string }> = ({
     users.uid.toLowerCase().includes(searchKeyword.toLowerCase())
   );
   console.log(matchedUsers);
+
+
   
-
-
   const registerFriends = async () => {
   await setDoc(doc(db, "friends",user.uid), {
-    test: matchedUsers
+    uid: matchedUsers.map(user => {return user.uid})
   });
   }
   
-
 // const friendsInfo = async () => {
 //   await setDoc(doc(db, 'friends', user.uid), {
 //     uid: ['8VxBTv75gcM0xjUWrly0Y0EgDKG3'],
