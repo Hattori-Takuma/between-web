@@ -21,7 +21,7 @@ const Login = () => {
       setLocationFunc(user);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, location]);
+  }, [location]);
   // login
   const google = async () => {
     const user = await googleLogin();
