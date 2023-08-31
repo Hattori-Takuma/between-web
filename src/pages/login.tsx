@@ -1,23 +1,36 @@
+import { useLocation } from '@/hooks/useLocation';
 import { useLoginCheck } from '@/hooks/useLoginCheck';
 import { userInfo } from '@/models/userInfoApplicationService';
 import Image from 'next/image';
 import Router from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { googleLogin } from '../models/authApplicationServics';
 
 const Login = () => {
   const isUser = useLoginCheck();
+  const { location } = useLocation();
+  const [user, setUser] = useState<any>();
   useEffect(() => {
     if (isUser) {
       Router.push(`friends`);
     }
   }, [isUser]);
+
+  useEffect(() => {
+    if (user !== undefined) {
+      setLocationFunc(user);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, location]);
+  // login
   const google = async () => {
     const user = await googleLogin();
-    console.log('🚀 ~ file: login.tsx:17 ~ google ~ user:', user);
-    await userInfo(user);
+    setUser(user);
+  };
+
+  const setLocationFunc = async (user: any) => {
+    await userInfo(user, location);
     Router.push(`friends/`);
-    console.log('user', user);
   };
 
   return (
