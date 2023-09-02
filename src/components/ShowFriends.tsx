@@ -2,6 +2,7 @@ import {
   getMyFriends,
   getUserInfoByUid,
 } from '@/models/friendsInfoApplicationService';
+import Link from 'next/link';
 import Router from 'next/router';
 import { useEffect, useState } from 'react';
 
@@ -41,8 +42,9 @@ const ShowFriends = ({ uid }: { uid: string }) => {
         {users.map((user, index) => {
           return (
             <li key={index}>
-              {user.name} / {user.address} / <button onClick={handleBothFunctions}>🍺🍚🍖🍺🍚🍖</button> <Link href="/BetweenLocation">進む
-              </Link>
+              {user.name} / {user.address} /{' '}
+              <button onClick={handleBothFunctions}>🍺🍚🍖🍺🍚🍖</button>
+              <Link href="/BetweenLocation">進む</Link>
             </li>
           );
         })}
