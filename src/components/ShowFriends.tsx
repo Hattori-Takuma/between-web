@@ -2,14 +2,13 @@ import {
   getMyFriends,
   getUserInfoByUid,
 } from '@/models/friendsInfoApplicationService';
+import Router from 'next/router';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-
-
 
 const ShowFriends = ({ uid }: { uid: string }) => {
   const [users, setUsers] = useState<any[]>([]);
-   const [inviteFriend, setInviteFriend] = useState<any[]>([]);
+  const [inviteFriend, setInviteFriend] = useState<any[]>([]);
+
   useEffect(() => {
     getFriends();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -21,21 +20,21 @@ const ShowFriends = ({ uid }: { uid: string }) => {
     setUsers(users);
   };
 
-
-   const invite = async (user:any) => {
-  await setInviteFriend(
-     user.address)
-   }
-  
- 
-  
-   const handleBothFunctions = (user:any) => {
-    invite(user);
-     window.location.href = '/BetweenLocation';
-
-    console.log(invite)
+  const invite = async (user: any) => {
+    await setInviteFriend(user.address);
   };
-  
+
+
+  const handleClick2 = () => {
+    Router.push('/betweenLocation');
+  };
+
+  const handleBothFunctions = (user: any) => {
+    invite(user);
+    handleClick2();
+
+  };
+
   return (
     <div>
       <hr />
@@ -44,9 +43,8 @@ const ShowFriends = ({ uid }: { uid: string }) => {
         {users.map((user, index) => {
           return (
             <li key={index}>
-              <Link href="/BetweenLocation">
-              {user.name} / {user.address} / <button onClick={handleBothFunctions}>🍺🍚🍖🍺🍚🍖</button>
-                  </Link>
+              {user.name} / {user.address} /{' '}
+              <button onClick={handleBothFunctions}>🍺🍚🍖🍺🍚🍖</button>
             </li>
           );
         })}

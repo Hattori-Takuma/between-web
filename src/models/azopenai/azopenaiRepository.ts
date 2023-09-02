@@ -1,14 +1,14 @@
 import { AzureKeyCredential, OpenAIClient } from '@azure/openai';
 
 export class AzOpenaiRepository {
-  async getAzOpenAIData(context: string) {
+  async getAzOpenAIData(address: string) {
+    const endpoint = process.env.AZURE_OPENAI_ENDPOINT!;
+    const azureApiKey = process.env.AZURE_OPENAI_API_KEY!;
+    const deploymentId = process.env.AZURE_OPENAI_DEPLOYMENT_ID!;
     console.log('start', process.env.AZURE_OPENAI_ENDPOINT!);
     return new Promise(async (resolve, reject) => {
-      const endpoint = process.env.AZURE_OPENAI_ENDPOINT!;
-      const azureApiKey = process.env.AZURE_OPENAI_API_KEY!;
-      const deploymentId = process.env.AZURE_OPENAI_DEPLOYMENT_ID!;
       const content = `
-      ${context}
+      ${address}
       #上記の周辺で美味しい居酒屋を教えて
       `;
       try {
@@ -23,8 +23,6 @@ export class AzOpenaiRepository {
           endpoint,
           new AzureKeyCredential(azureApiKey)
         );
-
-        console.log('ここまではきている******');
 
         const result = await client.getChatCompletions(deploymentId, messages);
         resolve(result.choices);
