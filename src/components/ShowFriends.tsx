@@ -1,13 +1,16 @@
+import { withFriend } from '@/features/friendSlics';
+import { useAppDispatch } from '@/hooks/useRTK';
 import {
   getMyFriends,
   getUserInfoByUid,
 } from '@/models/friendsInfoApplicationService';
-import Link from 'next/link';
 import Router from 'next/router';
 import { useEffect, useState } from 'react';
 
 const ShowFriends = ({ uid }: { uid: string }) => {
   const [users, setUsers] = useState<any[]>([]);
+  const dispatch = useAppDispatch();
+
   const [inviteFriend, setInviteFriend] = useState<any[]>([]);
 
   useEffect(() => {
@@ -21,31 +24,30 @@ const ShowFriends = ({ uid }: { uid: string }) => {
     setUsers(users);
   };
 
-  const invite = async (user: any) => {
-    await setInviteFriend(user.address);
-  };
-
-
-  const handleClick2 = () => {
-    Router.push('/betweenLocation');
-  };
-
-  const handleBothFunctions = (user: any) => {
-    invite(user);
-    handleClick2();
-
-  };
-
   return (
     <div>
       <hr />
       *** ShowFriends ***
       <ul>
         {users.map((user, index) => {
+          const invite = async (user: any) => {
+            await setInviteFriend(user.address);
+          };
+          const handleBothFunctions = (user: any) => {
+            console.log(
+              '🚀 ~ file: ShowFriends.tsx:34 ~ handleBothFunctions ~ user:',
+              user
+            );
+            invite(user);
+            dispatch(withFriend(user));
+            Router.push('/betweenLocation');
+          };
           return (
             <li key={index}>
               {user.name} / {user.address} /{' '}
-              <button onClick={handleBothFunctions}>🍺🍚🍖🍺🍚🍖</button>
+              <button onClick={() => handleBothFunctions(user)}>
+                🍺🍚🍖🍺🍚🍖
+              </button>
             </li>
           );
         })}
