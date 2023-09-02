@@ -27,14 +27,13 @@ const ShowFriends = ({ uid }: { uid: string }) => {
      user.address)
    }
   
-  const handleClick2 = () => {
-      <Link　href="/betweenLocation"></Link>
-  
-  };
+ 
   
    const handleBothFunctions = (user:any) => {
     invite(user);
-    handleClick2()
+     window.location.href = '/BetweenLocation';
+
+    console.log(invite)
   };
   
   return (
@@ -45,8 +44,9 @@ const ShowFriends = ({ uid }: { uid: string }) => {
         {users.map((user, index) => {
           return (
             <li key={index}>
-              {user.name} / {user.address} / <button onClick={handleBothFunctions}>🍺🍚🍖🍺🍚🍖</button> <Link href="/BetweenLocation">進む
-              </Link>
+              <Link href="/BetweenLocation">
+              {user.name} / {user.address} / <button onClick={handleBothFunctions}>🍺🍚🍖🍺🍚🍖</button>
+                  </Link>
             </li>
           );
         })}
