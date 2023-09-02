@@ -10,8 +10,7 @@ const BetweenLocation = () => {
   // 中間地点の緯度と経度を計算
   // const middleLatitude = (latitude + latitude2) / 2;
   // const middleLongitude = (longitude + longitude2) / 2;
-
-  const testFunction = async () => {
+    const testFunction = async () => {
     const res = await axios.post('api/azopenai', { message: '大阪市北区本庄' });
     console.log(
       '🚀 ~ file: betweenLocation.tsx:14 ~ testFunction ~ res:',
@@ -19,17 +18,20 @@ const BetweenLocation = () => {
     );
     setStoreList(res.data[0].message.content);
   };
+  
 
-  return (
-    <div>
+    return (
+      <div>
+        
+
       <h1>中間地点計算</h1>
       <div>
         <h2>位置1:</h2>
         <button onClick={testFunction}>test</button>
         {storeList}
         {/* <p>緯度: {latitude}</p>
-        <p>経度: {longitude}</p>
-        <p>経度: {location}</p> */}
+          <p>経度: {longitude}</p>
+          <p>経度: {location}</p> */}
       </div>
       {/* <div>
         <h2>位置2:</h2>
@@ -43,6 +45,7 @@ const BetweenLocation = () => {
           <p>経度: {middleLongitude}</p>
         </div>
         )} */}
+         <Link　href="/friendsSarch">戻る</Link>
     </div>
   );
 };
