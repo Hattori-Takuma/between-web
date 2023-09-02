@@ -8,3 +8,12 @@ export const getAzOpenAIData = async (context: string) => {
     return err;
   }
 };
+
+export const getBetween = async (add1: string, add2: string) => {
+  try {
+    const repo = new AzOpenaiRepository();
+    return await repo.getBetween(add1, add2);
+  } catch (err) {
+    return err;
+  }
+};

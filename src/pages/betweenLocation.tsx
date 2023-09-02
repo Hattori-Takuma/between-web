@@ -8,7 +8,6 @@ const BetweenLocation = () => {
   const [storeList, setStoreList] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const friend = useAppSelector(selectFriend);
-  console.log('🚀 ~ file: betweenLocation.tsx:11 ~ friend:', friend);
   const { latitude, longitude, location } = useLocation();
 
   // const { latitude: latitude1, longitude: longitude1 } = useLocation();
@@ -17,9 +16,20 @@ const BetweenLocation = () => {
   // 中間地点の緯度と経度を計算
   // const middleLatitude = (latitude + latitude2) / 2;
   // const middleLongitude = (longitude + longitude2) / 2;
-  const testFunction = async () => {
+  const testFunction = async (location: string, address: string) => {
+    console.log(
+      '🚀 ~ file: betweenLocation.tsx:20 ~ testFunction ~ location:',
+      location,
+      '/',
+      address
+    );
     setIsLoading(true);
-    const res = await axios.post('api/azopenai', { message: '大阪市北区本庄' });
+    const position = await axios.post('api/between', { location, address });
+    console.log(
+      '🚀 ~ file: betweenLocation.tsx:22 ~ testFunction ~ position:',
+      position.data[0]
+    );
+    const res = await axios.post('api/azopenai', { message: location });
     console.log(
       '🚀 ~ file: betweenLocation.tsx:14 ~ testFunction ~ res:',
       res.data[0].message.content
@@ -37,7 +47,9 @@ const BetweenLocation = () => {
       <div>{friend.name}</div>
       <div>{friend.uid}</div>
       <div>{friend.address}</div>
-      <button onClick={testFunction}>test</button>
+      <button onClick={() => testFunction(location, friend.address)}>
+        test
+      </button>
       {isLoading ? (
         <div role="status">
           <svg
