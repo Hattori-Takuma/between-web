@@ -2,6 +2,7 @@ import {
   getMyFriends,
   getUserInfoByUid,
 } from '@/models/friendsInfoApplicationService';
+import Link from 'next/link';
 import Router from 'next/router';
 import { useEffect, useState } from 'react';
 
