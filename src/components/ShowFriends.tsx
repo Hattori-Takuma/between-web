@@ -2,14 +2,13 @@ import {
   getMyFriends,
   getUserInfoByUid,
 } from '@/models/friendsInfoApplicationService';
+import Router from 'next/router';
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-
-
 
 const ShowFriends = ({ uid }: { uid: string }) => {
   const [users, setUsers] = useState<any[]>([]);
-   const [inviteFriend, setInviteFriend] = useState<any[]>([]);
+  const [inviteFriend, setInviteFriend] = useState<any[]>([]);
+
   useEffect(() => {
     getFriends();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -21,22 +20,19 @@ const ShowFriends = ({ uid }: { uid: string }) => {
     setUsers(users);
   };
 
+  const invite = async (user: any) => {
+    await setInviteFriend(user.address);
+  };
 
-   const invite = async (user:any) => {
-  await setInviteFriend(
-     user.address)
-   }
-  
   const handleClick2 = () => {
-      <Link　href="/betweenLocation"></Link>
-  
+    Router.push('/betweenLocation');
   };
-  
-   const handleBothFunctions = (user:any) => {
+
+  const handleBothFunctions = (user: any) => {
     invite(user);
-    handleClick2()
+    handleClick2();
   };
-  
+
   return (
     <div>
       <hr />
