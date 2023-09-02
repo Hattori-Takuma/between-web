@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useLocation } from '@/hooks/useLocation';
 
 const BetweenLocation = () => {
   const [storeList, setStoreList] = useState<string>('');
-  // const { latitude, longitude, location } = useLocation();
+  const { latitude, longitude, location } = useLocation();
   // const { latitude: latitude1, longitude: longitude1 } = useLocation();
   // const { latitude: latitude2, longitude: longitude2 } = useLocation();
 
@@ -30,9 +31,9 @@ const BetweenLocation = () => {
         <h2>位置1:</h2>
         <button onClick={testFunction}>test</button>
         {storeList}
-        {/* <p>緯度: {latitude}</p>
+        <p>緯度: {latitude}</p>
           <p>経度: {longitude}</p>
-          <p>経度: {location}</p> */}
+          <p>住所: {location}</p>
       </div>
       {/* <div>
         <h2>位置2:</h2>
